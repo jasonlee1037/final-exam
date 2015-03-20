@@ -1,0 +1,12 @@
+cd data_files/shell_fun
+mkdir inn_files
+mkdir nex_files
+mkdir parm_files
+mkdir tree_files
+mv *.inn ~/data_files/shell_fun/inn_files
+mv *.nex ~/data_files/shell_fun/nex_files
+mv *.parm ~/data_files/shell_fun/parm_files
+mv *.tree ~/data_files/shell_fun/tree_files
+cd nex_files
+
+
