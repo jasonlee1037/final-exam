@@ -25,5 +25,3 @@ for articleH2 in soup.find_all('h2'):
 			for p in div.find_all("p"):
 				pCount +=1
 		print ancStr + ": " + str(pCount) + " paragraphs"
-
-
