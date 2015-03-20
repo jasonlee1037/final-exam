@@ -16,11 +16,22 @@ cd nex_files
 grep -a TITLE *.nex > titleDimension.txt
 grep -a DIMENSIONS *.nex >> titleDimension.txt 
 
+#4
+sudo apt-get install bc
+#set a equal to number of 5000 instances in parm file
+a=$(grep -c ^5000 MK_brown.out.parm)
+#set b equal to number of lines in parm file
+b=$(wc -l MK_brown.out.parm | cut -d' ' -f1)
+#divide, showing decimal places, output to file
+echo "$a/$b" | bc -l >> prob.txt
 
+a=$(grep -c ^5000 MK_little.out.parm)
+b=$(wc -l MK_little.out.parm | cut -d' ' -f1)
+echo "$a/$b" | bc -l >> prob.txt
 
-
-rep -c ^5000 *[^l].parm
-wc -l *[^l].parm
+a=$(grep -c ^5000 MK_M262.outn.parm)
+b=$(wc -l MK_M262.outn.parm | cut -d' ' -f1)
+echo "$a/$b" | bc -l >> prob.txt
 
 
 #5
