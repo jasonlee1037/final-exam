@@ -61,3 +61,16 @@
 #sort by ascending title, show only bin
 > movies1 %>% arrange(title) %>% select(title, year, genre)
 
+
+                    title year       genre
+1                       $ 1971      Comedy
+2                       $ 1971       Drama
+3       $1000 a Touchdown 1939      Comedy
+4  $21 a Day Once a Month 1941   Animation
+5  $21 a Day Once a Month 1941       Short
+6                 $40,000 1996      Comedy
+7                   $pent 2000       Drama
+8                 $windle 2002      Action
+9                 $windle 2002       Drama
+10                   '15' 2002 Documentary
+..                    ...  ...         ...
