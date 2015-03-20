@@ -1,12 +1,32 @@
 cd data_files/shell_fun
+#1
 mkdir inn_files
 mkdir nex_files
 mkdir parm_files
 mkdir tree_files
+
+#2
 mv *.inn ~/data_files/shell_fun/inn_files
 mv *.nex ~/data_files/shell_fun/nex_files
 mv *.parm ~/data_files/shell_fun/parm_files
 mv *.tree ~/data_files/shell_fun/tree_files
+
+#3
 cd nex_files
+grep -a TITLE *.nex > titleDimension.txt
+grep -a DIMENSIONS *.nex >> titleDimension.txt 
 
 
+
+
+rep -c ^5000 *[^l].parm
+wc -l *[^l].parm
+
+
+#5
+cd ..
+cd shell_fun
+ls ~/*.txt > textfiles.txt
+ls ~/*/*.txt >> textfiles.txt
+ls ~/*/*/*.txt >> textfiles.txt
+ls ~/*/*/*/*.txt >> textfiles.txt

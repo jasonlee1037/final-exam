@@ -1,0 +1,2 @@
+#1
+movies %>% filter(rating > 8.0, votes > 500) %>% count
