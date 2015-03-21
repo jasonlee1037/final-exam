@@ -1,44 +1,48 @@
 #1
 #only show moves that have a rating > 8, votes > 500. count the number of results
 > movies %>% filter(rating > 8.0, votes > 500) %>% count
-	
-	261
+> prob1 <-movies %>% filter(rating > 8.0, votes > 500) %>% count
+
+# 261
 
 #2
 #show the top 10 results, only showing the columns title and year. arrange automatically sorts ascending.
 > movies %>% filter(rating > 8.0, votes > 500) %>% arrange(year) %>% head(10) %>% select(title, year)
+> prob2 <-movies %>% filter(rating > 8.0, votes > 500) %>% arrange(year) %>% head(10) %>% select(title, year)
+
 	
-	                                   title year
-	1                Voyage dans la lune, Le 1902
-	2      Kabinett des Doktor Caligari, Das 1920
-	3                               Kid, The 1921
-	4                                   Cops 1922
-	5  Nosferatu, eine Symphonie des Grauens 1922
-	6                           Safety Last! 1923
-	7                                  Greed 1924
-	8                          Sherlock, Jr. 1924
-	9                  Bronenosets Potyomkin 1925
-	10                        Gold Rush, The 1925
+	#                                    title year
+	# 1                Voyage dans la lune, Le 1902
+	# 2      Kabinett des Doktor Caligari, Das 1920
+	# 3                               Kid, The 1921
+	# 4                                   Cops 1922
+	# 5  Nosferatu, eine Symphonie des Grauens 1922
+	# 6                           Safety Last! 1923
+	# 7                                  Greed 1924
+	# 8                          Sherlock, Jr. 1924
+	# 9                  Bronenosets Potyomkin 1925
+	# 10                        Gold Rush, The 1925
 
 #3
 #movies94 - all movies with 500+ votes, after 1993 (starting with 1994)
 > movies94 <- movies %>% filter(votes > 500, year > 1994) %>% select(title, year, rating, votes)
 #group them by year, then summarize - show title that was the lowest in rating, the rating, and votes value that was lowest in rating.
 > movies94 %>% group_by(year) %>% summarize(title=title[which.min(rating)],rating=rating[which.min(rating)],votes=votes[which.min(rating)])
+> prob3 <-movies94 %>% group_by(year) %>% summarize(title=title[which.min(rating)],rating=rating[which.min(rating)],votes=votes[which.min(rating)])
 	
 
-	   year                                title rating votes
-	1  1995                         Theodore Rex    2.2 15161
-	2  1996    Merlin's Shop of Mystical Wonders    1.5  5028
-	3  1997                           Future War    1.6   799
-	4  1998 3 Ninjas: High Noon at Mega Mountain    2.2   841
-	5  1999        Underground Comedy Movie, The    1.8 19095
-	6  2000                        Backyard Dogs    1.9  3349
-	7  2001                              Glitter    2.1 10866
-	8  2002                           Rollerball    2.8  1264
-	9  2003                 From Justin to Kelly    1.7   605
-	10 2004                Daniel - Der Zauberer    1.8  1275
-	11 2005                      Son of the Mask    1.9  2880
+	#    year                                title rating votes
+	# 1  1995                         Theodore Rex    2.2 15161
+	# 2  1996    Merlin's Shop of Mystical Wonders    1.5  5028
+	# 3  1997                           Future War    1.6   799
+	# 4  1998 3 Ninjas: High Noon at Mega Mountain    2.2   841
+	# 5  1999        Underground Comedy Movie, The    1.8 19095
+	# 6  2000                        Backyard Dogs    1.9  3349
+	# 7  2001                              Glitter    2.1 10866
+	# 8  2002                           Rollerball    2.8  1264
+	# 9  2003                 From Justin to Kelly    1.7   605
+	# 10 2004                Daniel - Der Zauberer    1.8  1275
+	# 11 2005                      Son of the Mask    1.9  2880
 
 
 
@@ -60,17 +64,23 @@
 
 #sort by ascending title, show only bin
 > movies1 %>% arrange(title) %>% select(title, year, genre)
+>prob4 <-movies1 %>% arrange(title) %>% select(title, year, genre)
 
+#                     title year       genre
+# 1                       $ 1971      Comedy
+# 2                       $ 1971       Drama
+# 3       $1000 a Touchdown 1939      Comedy
+# 4  $21 a Day Once a Month 1941   Animation
+# 5  $21 a Day Once a Month 1941       Short
+# 6                 $40,000 1996      Comedy
+# 7                   $pent 2000       Drama
+# 8                 $windle 2002      Action
+# 9                 $windle 2002       Drama
+# 10                   '15' 2002 Documentary
+# ..                    ...  ...         ...
 
-                    title year       genre
-1                       $ 1971      Comedy
-2                       $ 1971       Drama
-3       $1000 a Touchdown 1939      Comedy
-4  $21 a Day Once a Month 1941   Animation
-5  $21 a Day Once a Month 1941       Short
-6                 $40,000 1996      Comedy
-7                   $pent 2000       Drama
-8                 $windle 2002      Action
-9                 $windle 2002       Drama
-10                   '15' 2002 Documentary
-..                    ...  ...         ...
+#write everything to its own file
+> write.csv(prob1, "rdata1.csv")
+> write.csv(prob2, "rdata2.csv")
+> write.csv(prob3, "rdata3.csv")
+> write.csv(prob4, "rdata4.csv")
